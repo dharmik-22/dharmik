@@ -16,8 +16,9 @@ class PostController extends GetxController {
 
   void fetchPosts() async {
     try {
+      isLoading(true);
       var posts = await repository.getPosts();
-      postList.value = posts.map((e) => Post.fromJson(e)).toList();
+      postList.value = posts.map((post) => Post.fromJson(post)).toList();
     } finally {
       isLoading(false);
       throw Exception('Failed To Load Data');
